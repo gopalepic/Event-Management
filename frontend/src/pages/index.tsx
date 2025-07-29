@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('connect');
@@ -14,7 +14,7 @@ export default function Home() {
     title: '',
     date: '',
     time: '',
-    duration: '30' // 30 or 60 minutes
+    duration: '' // User must select duration
   });
 
   // Check connection status on load
@@ -77,12 +77,12 @@ export default function Home() {
 
       alert('Event created successfully! Check your Google Calendar.');
       
-      // Reset form
+      // Reset form (but keep duration as user's preference)
       setEventForm({
         title: '',
         date: '',
         time: '',
-        duration: '30'
+        duration: eventForm.duration // Keep the user's selected duration
       });
 
     } catch (error: any) {
@@ -236,7 +236,9 @@ export default function Home() {
                       value={eventForm.duration}
                       onChange={(e) => setEventForm({ ...eventForm, duration: e.target.value })}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                      required
                     >
+                      <option value="">Please select duration</option>
                       <option value="30">30 minutes</option>
                       <option value="60">1 hour</option>
                     </select>

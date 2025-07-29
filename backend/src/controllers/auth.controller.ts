@@ -92,10 +92,10 @@ export const handleGoogleCallback = async (req: Request, res: Response) => {
     });
     
     // Redirect to frontend with user data
-    const frontendCallbackUrl = `http://localhost:3000/auth/callback?userId=${user.id}&email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name || '')}`;
+    const frontendCallbackUrl = `${process.env.FRONTEND_CALLBACK_URL}?userId=${user.id}&email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name || '')}`;
     return res.redirect(frontendCallbackUrl);
   } catch (error) {
     console.error("Error during Google OAuth callback:", error);
-    return res.redirect(`http://localhost:3000?error=auth_failed`);
+    return res.redirect(`${process.env.FRONTEND_ERROR_URL}?error=auth_failed`);
   }
 };
