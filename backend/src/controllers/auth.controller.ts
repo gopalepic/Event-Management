@@ -32,10 +32,6 @@ export const redirectToGoogle = (req: Request, res: Response) => {
 
   const authUrl = `${GOOGLE_AUTH_BASE_URL}?${params}`;
 
-  console.log("Redirecting to Google OAuth URL:", authUrl);
-
-
- 
   return res.redirect(authUrl);
 };
 
@@ -94,10 +90,12 @@ export const handleGoogleCallback = async (req: Request, res: Response) => {
         refreshToken: refresh_token,
       },
     });
-    // redirect
-    return res.send(`Google calender connected for ${user.email}`);
+    
+    // Redirect to frontend with user data
+    const frontendCallbackUrl = `http://localhost:3000/auth/callback?userId=${user.id}&email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name || '')}`;
+    return res.redirect(frontendCallbackUrl);
   } catch (error) {
     console.error("Error during Google OAuth callback:", error);
-    return res.status(500).json({ error: "Internal server error" });
+    return res.redirect(`http://localhost:3000?error=auth_failed`);
   }
 };

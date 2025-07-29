@@ -1,6 +1,5 @@
 import express from 'express';
 import {redirectToGoogle, handleGoogleCallback} from '../controllers/auth.controller';
-
 const router = express.Router();
 
 router.get('/google', redirectToGoogle);
