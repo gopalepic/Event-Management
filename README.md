@@ -16,8 +16,9 @@ A full-stack application for Google Calendar integration with event creation fun
 ## ⚡ Quick Start
 
 ### Backend (Azure)
-- Deployed at: `https://calendar-integration-backend.azurewebsites.net`
+- Deployed at: `https://calendar-integration-backend-eabkffc4gphtenfc.westus-01.azurewebsites.net`
 - Auto-deploys from GitHub Actions
+- Status: Deploying... 🚀
 
 ### Frontend (Local)
 ```bash
