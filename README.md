@@ -11,7 +11,7 @@ A full-stack application for Google Calendar integration with event creation fun
 ## 🛠️ Tech Stack
 - **Backend**: Node.js, Express, TypeScript, Prisma, PostgreSQL
 - **Frontend**: Next.js, React, Tailwind CSS
-- **Deployment**: Azure App Service, GitHub Actions
+- **Deployment**: Azure App Service, GitHub Actions , Vercel , Azure-Postgres
 
 ## ⚡ Quick Start
 
