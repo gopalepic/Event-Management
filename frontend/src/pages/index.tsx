@@ -255,8 +255,13 @@ export default function Home() {
               </div>
             )}
           </div>
+
         </div>
       </div>
+      
+          <div className='text-center mt-8  text-red-950 text-2xl'>
+           It may happen that authentication fails because i stopped the connected Database 
+          </div>
     </div>
   );
 }
